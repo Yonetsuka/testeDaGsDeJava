@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{base :: head}"></head>
+<body>
+    <div th:replace="~{base :: logo}"></div>
+    <div class="container">
+        <div th:replace="~{base :: titulo('Novo Item')}"></div>
+        <div class="card mt-3">
+            <form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
+                <div class="form-group">
+                    <label for="nomeProduto">Produto</label>
+                    <input class="form-control" th:field="*{nomeProduto}" th:errorclass="is-invalid" id="nomeProduto" name="nomeProduto" placeholder="nome do produto">
+                    <small>Informe qual o nome do produto</small>
+                    <div th:errors="*{nomeProduto}" class="invalid-feedback">Erro do nome do produto</div>
+                </div>
+                <div class="form-group">
+                    <label for="urlProduto">Produto</label>
+                    <input class="form-control" th:field="*{urlProduto}" th:errorclass="is-invalid" id="urlProduto" name="urlProduto" placeholder="url do produto">
+                    <small>Procure em um site o produto que deseja e cole a url da página aqui</small>
+                    <div th:errors="*{nomeProduto}" class="invalid-feedback">Erro da url do produto</div>
+                </div>
+                <div class="form-group">
+                    <label for="urlImagem">Produto</label>
+                    <input class="form-control" th:field="*{urlImagem}" th:errorclass="is-invalid" id="urlImagem" name="urlImagem" placeholder="url da imagem">
+                    <small>Copie a url de uma boa imagem e cole aqui</small>
+                    <div th:errors="*{nomeProduto}" class="invalid-feedback">Erro da url da imagem</div>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Produto</label>
+                    <textarea class="form-control" th:field="*{descricao}" id="descricao" name="descricao" placeholder="Adicione os detalhes importantes do item"></textarea>
+                </div>
+                <button class="btn btn-primary mt-3" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

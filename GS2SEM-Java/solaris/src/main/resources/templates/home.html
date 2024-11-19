@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{base :: head}"></head>
+<body>
+    <div th:replace="~{base :: logo}"></div>
+    <div class="container">
+
+        <div th:replace="~{base :: titulo('Meus Itens')}"></div>
+        <nav class="navbar navbar-expand bg-body-tertiary d-flex justify-content-between mb-3">
+            <div class="navbar-nav">
+                <a class="nav-link-active" href="">Todos</a>
+                <a class="nav-link" href="">Esgotados</a>
+                <a class="nav-link" href="">Enviados</a>
+                <a class="nav-link" href="">Entregues</a>
+            </div>
+            <a href="/pedido/formulario">
+                <button class="btn btn-outline-secondary me-3">Novo</button>
+            </a>
+        </nav>
+        <div class="card mb-3" th:each="item : ${itens}">
+            <div class="card-header" th:text="${item.nomeProduto}">Nome do produto</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-8 mb-3">
+                            <div class="row">
+                                <div class="col-md-5">Valor:<span th:text="${item.valorNegociado}">199,95</span></div>
+                                <div class="col-md-7">Produto</div>
+                            </div>
+                            <div>
+                                <input class="form-control" th:value="${item.urlProduto}" value="url do produto">
+                            </div>
+                            <div>Descrição</div>
+                            <div>
+                                <textarea class="form-control" th:text="${item.descricao}">descrição do produto</textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div>
+                                <img class="img-thumbnail" th:src="${pedido.urlImagem}" src="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
